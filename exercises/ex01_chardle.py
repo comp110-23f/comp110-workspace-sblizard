@@ -24,5 +24,8 @@ for i in range(5):
         charCount+=1
         print(guessedCharacter + " found at index " + str((i)))
 
-print(str(charCount) + " instances of " + guessedCharacter + " found in " + guessWord)
+if charCount == 0:
+    print("No instances of " + guessedCharacter + " found in " + guessWord)
+else:
+    print(str(charCount) + " instances of " + guessedCharacter + " found in " + guessWord)
 
