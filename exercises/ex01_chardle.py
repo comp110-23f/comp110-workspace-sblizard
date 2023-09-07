@@ -1,4 +1,4 @@
-"""A step towards wordle """
+"""A step towards wordle."""
 
 __author__ = "730642587"
 
@@ -10,7 +10,7 @@ if len(guess_word) != 5:
 
 guessed_character = input("Enter a single character: ")
 
-if  len(guessed_character) != 1:
+if  len(guessed_character) != 1:    
     print("Error: character must be a single character")
     exit()
     
@@ -26,6 +26,7 @@ for i in range(5):
 
 if char_count == 0:
     print("No instances of " + guessed_character + " found in " + guess_word)
+elif char_count == 1:
+    print("1 instance of " + guessed_character + " found in " + guess_word)
 else:
     print(str(char_count) + " instances of " + guessed_character + " found in " + guess_word)
-
