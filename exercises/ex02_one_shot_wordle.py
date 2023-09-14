@@ -27,7 +27,7 @@ while index < len(word_to_guess):
     else:
         currentIndexEmoji = WHITE_BOX
         correct = False
-    if index == len(word_to_guess)-1:
+    if index == len(word_to_guess) - 1:
         print(f"{currentIndexEmoji}")
     else:
         print(f"{currentIndexEmoji}", end="")
@@ -37,6 +37,3 @@ if correct:
     print("Woo! You got it!")
 else:
     print("Not quite. Play again soon!")
-
-
-
