@@ -2,17 +2,17 @@
 
 __author__ = "730642587"
 word_to_guess: str = "codes"
-guess: str = ""
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 
 
-def input_guess(guess: str) -> str:
+def input_guess(expected_len: int) -> str:
     """Makes sure the input is the correct number of characters long."""
-    while len(guess) != len(word_to_guess):
-        guess = input(f"That wasn't {str(len(word_to_guess))} chars! Try again: ")
-    return guess
+    local_guess = input(f"Enter a {len(word_to_guess)} character word: ")
+    while len(local_guess) != len(word_to_guess):
+        local_guess = input(f"That wasn't {str(len(word_to_guess))} chars! Try again: ")
+    return local_guess
 
 
 def contains_char(search_in_word: str, char: str) -> bool:
@@ -50,7 +50,7 @@ def main() -> None:
         number_of_guesses += 1
         print(f"== Turn {number_of_guesses}/6 ==")
         
-        guess = input_guess(input(f"Enter a {len(word_to_guess)} character word: "))
+        guess = input_guess(len(word_to_guess))
         
         print(emojified(guess, word_to_guess))
         if emojified(guess, word_to_guess) == "\U0001F7E9" * int(len(word_to_guess)):
