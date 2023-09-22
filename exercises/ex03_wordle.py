@@ -10,7 +10,7 @@ YELLOW_BOX: str = "\U0001F7E8"
 def input_guess(expected_len: int) -> str:
     """Makes sure the input is the correct number of characters long."""
     local_guess = input(f"Enter a {len(word_to_guess)} character word: ")
-    while len(local_guess) != len(word_to_guess):
+    while len(local_guess) != expected_len:
         local_guess = input(f"That wasn't {str(len(word_to_guess))} chars! Try again: ")
     return local_guess
 
@@ -46,15 +46,15 @@ def main() -> None:
     """The entrypoint of the program and main game loop."""
     number_of_guesses: int = 0
     win_game: bool = False
+   
     while (number_of_guesses <= len(word_to_guess)) and not (win_game):
         number_of_guesses += 1
         print(f"== Turn {number_of_guesses}/6 ==")
-        
         guess = input_guess(len(word_to_guess))
-        
         print(emojified(guess, word_to_guess))
         if emojified(guess, word_to_guess) == "\U0001F7E9" * int(len(word_to_guess)):
             win_game = True
+    
     if win_game:
         print(f"You won in {number_of_guesses}/6 turns!")
     else:
