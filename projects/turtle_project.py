@@ -9,6 +9,7 @@ bob.pencolor("blue")
 
 
 def line(turt: Turtle, start_pos: list[int], end_pos: list[int]):
+    """Creates a line between any two points"""
     turt.penup()
     turt.setheading(0)
     turt.setx(start_pos[0])
