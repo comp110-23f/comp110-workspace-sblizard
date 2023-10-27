@@ -1,4 +1,4 @@
-"""program that loops until correct number is guessed"""
+"""program that loops until correct number is guessed."""
 
 from random import randint
 

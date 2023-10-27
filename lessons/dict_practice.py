@@ -1,4 +1,4 @@
-"""Practice with creating a new dictionary"""
+"""Practice with creating a new dictionary."""
 ice_cream: dict[str, int] = {"chocalte": 12, "vanilla": 8, "strawberry": 5}
 
 ice_cream["mint"] = 3
