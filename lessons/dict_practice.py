@@ -9,7 +9,5 @@ ice_cream["vanilla"] = 10
 
 print(ice_cream)
 
-
-
 for i in ice_cream:
     print(i + "\n" + str(ice_cream[i]))
