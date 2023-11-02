@@ -1,5 +1,7 @@
-from lessons.zip import zip
 """Test my zip function."""
+
+
+from lessons.zip import zip
 
 
 __author__ = "730642587"
@@ -17,4 +19,4 @@ def test_even_number_of_elements() -> None:
 
 def test_different_lengths() -> None:
     """Zipping two lists with different lengths returns an empty dictionary.""" 
-    assert zip([1,2], [1]) == {}
+    assert zip([1, 2], [1]) == {}
