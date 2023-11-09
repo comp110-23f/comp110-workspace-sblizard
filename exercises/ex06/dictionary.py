@@ -51,14 +51,19 @@ def count(input_list: list[str]) -> dict[str, int]:
 
 def alphabetizer(input_list: list[str]) -> dict[str, list[str]]:
     """Function that alphebitizes a list into a dictionary."""
+    lower_list: list[str] = []
     for i in range(len(input_list)):
-        input_list[i] = input_list[i].lower()
+        lower_list.append(input_list[i].lower())
     return_dict: dict[str, list[str]] = {}
-    for k in input_list:
+    for k in lower_list:
         if k[0:1] in return_dict:
             return_dict[k[0:1]].append(k)
         else:
             return_dict[k[0:1]] = [k]
+    print(return_dict)
+    for j in input_list:
+        return_dict[j.lower()[0:1]].remove(j.lower())
+        return_dict[j.lower()[0:1]].append(j)
     return return_dict
 
 
@@ -67,5 +72,6 @@ def update_attendance(input_dict: dict[str, list[str]], day_of_week: str, studen
     if (day_of_week in input_dict) is False:
         input_dict[day_of_week] = [student]
     else:
-        input_dict[day_of_week].append(student)
+        if student not in input_dict[day_of_week]:
+            input_dict[day_of_week].append(student)
     return input_dict
