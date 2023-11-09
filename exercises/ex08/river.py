@@ -1,16 +1,20 @@
-"""File to define River class"""
+"""File to define River class."""
 
 from exercises.ex08.fish import Fish
 from exercises.ex08.bear import Bear
 
+__author__ = "730642587"
+
+
 class River:
-    
+    """River class."""
+
     day: int
     bears: list[Bear]
     fish: list[Fish]
 
-    def __init__(self, num_fish: int, num_bears:int):
-        """New River with num_fish Fish and num_bears Bears"""
+    def __init__(self, num_fish: int, num_bears: int):
+        """New River with num_fish Fish and num_bears Bears."""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -35,12 +39,14 @@ class River:
         self.bears = keep_bears
 
     def bears_eating(self):
-        if len(self.fish) >= 5:
-            for i in self.bears:
+        """Bear eating method."""
+        for i in self.bears:
+            if len(self.fish) >= 5:
                 i.eat(3)
                 self.remove_fish(3)
     
     def check_hunger(self):
+        """Check hunger method."""
         keep_bears: list[Bear] = []
         for i in self.bears:
             if i.hunger_score >= 0:
@@ -48,27 +54,32 @@ class River:
         self.bears = keep_bears
         
     def repopulate_fish(self):
-        for i in range(((len(self.fish))//2) * 4):
+        """Repopuate fish method."""
+        for i in range(((len(self.fish)) // 2) * 4):
             self.fish.append(Fish())
     
     def repopulate_bears(self):
-        for i in range(len(self.bears)//2):
+        """Repopulate bears method."""
+        for i in range(len(self.bears) // 2):
             self.bears.append(Bear())
     
     def view_river(self):
-        print(f"~~~ Day {self.day} ~~~\nFish population: {len(self.fish)}\nBear population: {len(self.bears)}")
+        """Allows us to view the river."""
+        print(f"~~~ Day {self.day}: ~~~\nFish population: {len(self.fish)}\nBear population: {len(self.bears)}\n")
 
     def one_river_week(self):
+        """7 days pass."""
         for i in range(7):
             self.one_river_day()
 
     def remove_fish(self, amount: int):
+        """Method that removes amount of fish."""
         for i in range(amount):
             if len(self.fish) > 0:
                 self.fish.pop(0)
             
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river."""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
