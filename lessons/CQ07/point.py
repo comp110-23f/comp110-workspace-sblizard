@@ -35,3 +35,7 @@ class Point:
     def __add__(self, amount: int | float) -> Point:
         """Overwrites add method."""
         return Point(self.x + amount, self.y + amount)
+    
+new_point: Point = Point()
+
+print(new_point + 4.0)
