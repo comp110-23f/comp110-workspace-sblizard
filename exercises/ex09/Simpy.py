@@ -94,7 +94,7 @@ class Simpy:
                 return_simpy.append(self.values[j] > object)
             return return_simpy
         
-    def __getitem__(self, input: Union[int, list[bool]]) -> float:
+    def __getitem__(self, input: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Overwrite the get item method for Simpy obects."""
         if isinstance(input, int):
             return self.values[input]
