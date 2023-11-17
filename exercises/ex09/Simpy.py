@@ -8,26 +8,25 @@ __author__ = "730642587"
 
 
 class Simpy:
+    """Simpy class."""
+
     values: list[float]
 
     # TODO: Your constructor and methods will go here.
 
-    def __init__(self, input_list: list[int]):
+    def __init__(self, input_list: list[float]):
         """Simpy object constructor."""
         self.values = input_list
 
-
-    def __str__(self):
+    def __str__(self) -> str:
         """Overwrites the str methiod for Simpy objects."""
         return f'Simpy({self.values})'
 
-
     def fill(self, value: float, times: int) -> None:
-        """fill methiod for Simpy objects."""
+        """Fill methiod for Simpy objects."""
         self.values = []
         for i in range(times):
             self.values.append(value)
-
 
     def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Arrange method for Simpy objects."""
@@ -36,6 +35,12 @@ class Simpy:
             self.values.append(start)
             start += step
 
+    def sum(self) -> float:
+        """Sum method for Simpy objects."""
+        sum: float = 0.0
+        for i in self.values:
+            sum += i
+        return sum
 
     def __add__(self, value: Union[Simpy, float]) -> Simpy:
         """Overwrites the add method for Simpy Objects."""
@@ -50,7 +55,6 @@ class Simpy:
                 return_simpy.values.append(self.values[j] + value)
             return return_simpy
             
-
     def __pow__(self, value: Simpy | float):
         """Overwrites the pow method for Simpy Objects."""
         return_simpy: Simpy = Simpy([])
@@ -77,7 +81,6 @@ class Simpy:
                 return_simpy.values.append(self.values[j] == object)
             return return_simpy
         
-
     def __gt__(self, object: Simpy | float):
         """Overwrites the > operator for Simpy objects."""
         return_simpy: Simpy = Simpy([])
@@ -91,6 +94,12 @@ class Simpy:
                 return_simpy.values.append(self.values[j] > object)
             return return_simpy
         
-    def __getitem__(self, idx: int) -> float:
+    def __getitem__(self, input: int | list[bool]) -> float:
         """Overwrite the get item method for Simpy obects."""
-        return self.values[idx]
+        if isinstance(input, int):
+            return self.values[input]
+        return_simpy: Simpy = Simpy([])
+        for i in range(len(self.values)):
+            if input[i]:
+                return_simpy.values.append(self.values[i])
+        return return_simpy
