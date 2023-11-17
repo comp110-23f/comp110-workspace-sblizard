@@ -55,7 +55,7 @@ class Simpy:
                 return_simpy.values.append(self.values[j] + value)
             return return_simpy
             
-    def __pow__(self, value: Simpy | float):
+    def __pow__(self, value: Union[Simpy, float]) -> Simpy:
         """Overwrites the pow method for Simpy Objects."""
         return_simpy: Simpy = Simpy([])
         if isinstance(value, Simpy):
@@ -68,33 +68,33 @@ class Simpy:
                 return_simpy.values.append(self.values[j] ** value)
             return return_simpy
 
-    def __eq__(self, object: Simpy | float):
+    def __eq__(self, object: Union[Simpy, float]) -> list[bool]:
         """Overwrites the == operator for Simpy objects."""
-        return_simpy: Simpy = Simpy([])
+        return_simpy: list[bool] = []
         if isinstance(object, Simpy):
             assert len(self.values) == len(object.values)
             for i in range(len(self.values)):
-                return_simpy.values.append(self.values[i] == object.values[i])
+                return_simpy.append(self.values[i] == object.values[i])
             return return_simpy
         elif isinstance(object, float):
             for j in range(len(self.values)):
-                return_simpy.values.append(self.values[j] == object)
+                return_simpy.append(self.values[j] == object)
             return return_simpy
         
-    def __gt__(self, object: Simpy | float):
+    def __gt__(self, object: Union[Simpy, float]) -> list[bool]:
         """Overwrites the > operator for Simpy objects."""
-        return_simpy: Simpy = Simpy([])
+        return_simpy: list[bool] = []
         if isinstance(object, Simpy):
             assert len(self.values) == len(object.values)
             for i in range(len(self.values)):
-                return_simpy.values.append(self.values[i] > object.values[i])
+                return_simpy.append(self.values[i] > object.values[i])
             return return_simpy
         elif isinstance(object, float):
             for j in range(len(self.values)):
-                return_simpy.values.append(self.values[j] > object)
+                return_simpy.append(self.values[j] > object)
             return return_simpy
         
-    def __getitem__(self, input: int | list[bool]) -> float:
+    def __getitem__(self, input: Union[int, list[bool]]) -> float:
         """Overwrite the get item method for Simpy obects."""
         if isinstance(input, int):
             return self.values[input]
