@@ -1,7 +1,8 @@
-from csv import DictReader
 """Dictionary related utility functions."""
+from csv import DictReader
 
 __author__ = "730642587"
+
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
     """Read csv file and return as a list of dicts with the headers as the keys."""
@@ -24,11 +25,11 @@ def column_values(table: list[dict[str, str]], header: str) -> list[str]:
     return result
 
 
-def columnar(table: list[dict[str,str]]) -> dict[str, list[str]]:
+def columnar(table: list[dict[str, str]]) -> dict[str, list[str]]:
     """Reformat data so it's a dictionary with column headers as keys."""
     result: dict[str, list[str]] = {}
     # loop through keys of one row of the table to get the headers
-    first_row: dict[str,str] = table[0]
+    first_row: dict[str, str] = table[0]
     for key in first_row:
         # for each key (header), make a dictionary entry with all the column values
         result[key] = column_values(table, key)
@@ -39,6 +40,8 @@ def head(input_table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Gives first n rows of a table."""
     return_dict: dict[str, list[str]] = {}
     for i in input_table:
+        if n >= len(input_table[i]):
+            return input_table
         append_list: list[str] = []
         for j in range(n):
             append_list.append(input_table[i][j])
